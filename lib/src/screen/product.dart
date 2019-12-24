@@ -73,13 +73,14 @@ class _ProductState extends State<ProductPage> {
         child: FutureBuilder(
           future: _future,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
+            var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
             if (snapshot.hasData) {
               List<String> loaded = snapshot.data;
               return GridView.builder(
                   itemCount: loaded.length,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: MediaQuery.of(context).size.height / 1000,
+                    crossAxisCount: isPortrait ? 2 : 4,
+                    childAspectRatio: isPortrait?0.65:0.6 //MediaQuery.of(context).size.height / 1050,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return new GestureDetector(

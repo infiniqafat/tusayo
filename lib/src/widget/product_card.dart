@@ -6,7 +6,8 @@ import 'package:tusayo/src/widget/button_action.dart';
 Widget buildProductCard(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.48,
-      height: 350.0,
+      height: 280.0,
+      constraints: BoxConstraints(minWidth: 100, maxWidth: 180),
       child: Stack(
         children: <Widget>[
           Card(

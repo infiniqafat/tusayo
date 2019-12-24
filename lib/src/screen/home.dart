@@ -59,26 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
           physics: ClampingScrollPhysics(),
           children: <Widget>[
             _buildCarausel(context),
-            new Container(
-              color: Colors.white,
-              padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-              alignment: Alignment.center,
-              child: Column(
-                children: <Widget>[
-                  _buildTitleCategory('Tukang Sayur Online'),
-                  _buildTitleSubCategory('100% Seger')
-                ],
-              ),
-            ),
-            new Container(
-                padding: EdgeInsets.only(
-                    left: 16.0, right: 16.0, top: 16.0, bottom: 20.0),
-                color: Colors.white,
-                child: new Column(
-                  children: <Widget>[
-                    _buildCategory(),
-                  ],
-                )),
+            _buildCategory(),
             Container(
               height: 10.0,
               color: Colors.grey[100],
@@ -108,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text(
                   "Sayuran Segar",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
                 SizedBox(
                   height: 25.0,
@@ -125,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Text("Lihat Semua",
                             style: TextStyle(
-                                fontSize: 10.0, color: AppPalette.green)),
+                                fontSize: 12.0, color: AppPalette.green)),
                         Icon(Icons.arrow_forward_ios,
                             size: 10.0, color: AppPalette.green),
                       ],
@@ -136,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-              height: 300.0,
+              height: 280.0,
               color: Colors.white,
               alignment: Alignment.topCenter,
               child: ListView.builder(
@@ -150,7 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
 
   Widget _buildShippingTwo() {
     return Container(
@@ -303,19 +283,31 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildCategory() {
-    return new SizedBox(
-        width: double.infinity,
-        height: 110.0,
-        child: new Container(
-            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
-            child: GridView.builder(
-                physics: ClampingScrollPhysics(),
-                itemCount: _categoryItem.length,
-                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (context, position) {
-                  return _buildRowCategory(_categoryItem[position]);
-                })));
+    var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    return new Container(
+        padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 10.0, bottom: 10.0),
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            _buildTitleCategory('Tukang Sayur Online'),
+            _buildTitleSubCategory('100% Seger'),
+            new SizedBox(
+                width: double.infinity,
+                height: isPortrait?110.0:140.0,
+                child: GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: _categoryItem.length,
+                    gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                    ),
+                    itemBuilder: (context, position) {
+                      return _buildRowCategory(_categoryItem[position]);
+                    }
+                  )
+            )              
+          ],
+      )
+    );
   }
 
   Widget _buildRowCategory(Category category) {
@@ -359,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               "Tanggal Kirim & Cabang",
               style: TextStyle(
-                  fontSize: 10.0,
+                  fontSize: 14.0,
                   fontWeight: FontWeight.normal,
                   color: Colors.black),
             ),
@@ -369,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     'Cabang Cikupa' + ' - ' + "Kami 2019",
                     style: TextStyle(
-                        fontSize: 12.0,
+                        fontSize: 16.0,
                         color: AppPalette.green,
                         fontWeight: FontWeight.normal),
                   ),
