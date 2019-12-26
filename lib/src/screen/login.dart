@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.topRight,
           child: Text(
             'Lupa password?',
-            style: TextStyle(color: Colors.black54, fontSize: 12.0),
+            style: TextStyle(color: Colors.black54, fontSize: 14.0),
             textAlign: TextAlign.right,
           ),
         ),
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           Text('Social Login',
               style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 14.0,
               )
           ),
         ],
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           Text('Tidak Punya Akun?',
               style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 14.0,
               )),
           InkWell(
             onTap: () {},

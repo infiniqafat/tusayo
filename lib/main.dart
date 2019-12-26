@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:tusayo/src/screen/checkout.dart';
 import 'package:tusayo/src/screen/home.dart';
 import 'package:tusayo/src/screen/landing.dart';
@@ -6,7 +7,10 @@ import 'package:tusayo/src/screen/login.dart';
 import 'package:tusayo/src/screen/product.dart';
 import 'package:tusayo/src/screen/transaction.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  //runApp(MyApp());
+  initializeDateFormatting("id_ID", null).then((_) =>runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

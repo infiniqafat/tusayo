@@ -71,3 +71,38 @@ class SliderM {
         "image":image,
     };
 }
+
+
+class DateOptions {
+    int id;
+    String date = '';
+    String month = '';
+    String year = '';
+    String day = '';
+    DateTime val;
+
+    DateOptions({
+        this.id,
+        this.date,
+        this.month,
+        this.year,
+        this.day,
+        this.val,
+    });
+
+    // Create a Note from JSON data
+    factory DateOptions.fromJson(Map<String, dynamic> json) => new DateOptions(
+        id: json["id"],
+        val: json["val"],
+        date: json["date"],
+        month: json["month"],
+        day: json["day"],
+        year: json["year"],
+    );
+
+    // Convert our Note to JSON to make it easier when we store it in the database
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "val":val,
+    };
+}

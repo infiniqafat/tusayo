@@ -27,7 +27,7 @@ class AccountState extends State<Account> {
     child: Center(
       child: Text(
         "versi aplikasi 1.0",
-        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+        style: TextStyle(fontSize: 14.0, color: Colors.grey),
       ),
     ),
   );

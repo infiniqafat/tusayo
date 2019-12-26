@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tusayo/src/helper/color.dart';
 import 'package:tusayo/src/model/global_model.dart';
 import 'package:tusayo/src/widget/cabang_bottom_sheet.dart';
@@ -17,6 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Category> _categoryItem = [];
   List<SliderM> _sliderItem = [];
   int _currentSlider = 0;
+
 
   @override
   void initState() {
@@ -47,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         id: 4,
         name: "Lain Lain",
         image: "https://tusayo.com/assets/images/home_2.jpg"));
+  
   }
 
   @override
@@ -106,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Text("Lihat Semua",
                             style: TextStyle(
-                                fontSize: 12.0, color: AppPalette.green)),
+                                fontSize: 14.0, color: AppPalette.green)),
                         Icon(Icons.arrow_forward_ios,
                             size: 10.0, color: AppPalette.green),
                       ],
@@ -117,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-              height: 280.0,
+              height: 300.0,
               color: Colors.white,
               alignment: Alignment.topCenter,
               child: ListView.builder(
@@ -293,12 +296,13 @@ class _MyHomePageState extends State<MyHomePage> {
             _buildTitleSubCategory('100% Seger'),
             new SizedBox(
                 width: double.infinity,
-                height: isPortrait?110.0:140.0,
+                height: isPortrait?130.0:140.0,
                 child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: _categoryItem.length,
                     gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
+                      childAspectRatio: 0.7,
                     ),
                     itemBuilder: (context, position) {
                       return _buildRowCategory(_categoryItem[position]);
@@ -325,17 +329,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   //border: Border.all(color: Colors.grey[200], width: 1.0),
                   //borderRadius:new BorderRadius.all(new Radius.circular(20.0))
                   ),
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(16.0),
               child: FadeInImage.assetNetwork(
                   placeholder: 'assets/img/placeholder.png',
                   image: category.image,
                   width: 40.0),
             ),
           ),
-          new Padding(
-            padding: EdgeInsets.only(top: 6.0),
-          ),
-          new Text(category.name, style: new TextStyle(fontSize: 10.0))
+          new Text(category.name, style: new TextStyle(fontSize: 12.0))
         ],
       ),
     );
@@ -355,24 +356,42 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.normal,
                   color: Colors.black),
             ),
-            GestureDetector(
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Cabang Cikupa' + ' - ' + "Kami 2019",
-                    style: TextStyle(
+           _buildTanggalCabang()          
+          ]
+        ),
+    );
+  }
+
+  Widget _builTanggalCabangLoading(){
+    return SizedBox(
+              width: 200.0,
+              height: 20.0,
+              child: Shimmer.fromColors(
+                baseColor: Colors.grey[300],
+                highlightColor: Colors.grey[100],
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+      );
+  }
+  Widget _buildTanggalCabang(){
+    return GestureDetector(
+      child: Row(
+        children: <Widget>[
+          Text(
+            'Cabang Cikupa' + ' - ' + " Kamis, 27 Mei 19",
+            style: TextStyle(
                         fontSize: 16.0,
                         color: AppPalette.green,
                         fontWeight: FontWeight.normal),
-                  ),
-                  Icon(Icons.arrow_drop_down, color: AppPalette.green)
-                ],
-              ),
-              onTap: () {
-                brachBottomSheet(context);
-              },
-            ),
-          ]),
+          ),
+          Icon(Icons.arrow_drop_down, color: AppPalette.green)
+        ],
+      ),
+      onTap: (){
+        brachBottomSheet(context);
+      },
     );
   }
 }

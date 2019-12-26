@@ -66,7 +66,7 @@ Widget buildProductCard(BuildContext context) {
                       ),
                       Text(
                         'Isi 1/ Kg',
-                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                        style: TextStyle(fontSize: 14.0, color: Colors.grey),
                       ),
                       SizedBox(
                         height: 5.0,
@@ -78,7 +78,7 @@ Widget buildProductCard(BuildContext context) {
                           Text(
                             "Rp 120.000 ",
                             style: TextStyle(
-                              fontSize: 10.0,
+                              fontSize: 12.0,
                               color: Colors.black,
                               decoration: TextDecoration.lineThrough,
                             ),
@@ -98,7 +98,7 @@ Widget buildProductCard(BuildContext context) {
                               color: Colors.red[300],
                               textColor: Colors.white,
                               child: Text("Save 10 %",
-                                  style: TextStyle(fontSize: 10.0)),
+                                  style: TextStyle(fontSize: 12.0)),
                             ),
                           )
                         ],
